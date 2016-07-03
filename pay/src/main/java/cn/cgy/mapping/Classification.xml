@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd"> 
+<mapper namespace="cn.cgy.dao.ClassificationDao">  
+	<select id="findAllClass" resultType="cn.cgy.pojo.Classification" useCache="false">
+		select t.* from classification t
+	</select>
+	<select id="findClassById" parameterType="int" resultType="cn.cgy.pojo.Classification">
+		select t.* from classification t where t.id = #{id}
+	</select>
+	
+	<insert id="insert" parameterType="cn.cgy.pojo.Classification">
+		insert into classification
+		(  class1 , class2 , class3)
+		values
+		(#{class1},#{class2},#{class3})
+	</insert>
+	
+	<update id="update" parameterType="cn.cgy.pojo.Classification">
+		update classification 
+		set
+			class1=#{class1},
+			class2=#{class2},
+			class3=#{class3}
+		where
+			id=#{id}
+	</update>
+	
+	<delete id="deleteById" parameterType="int">
+		delete from classification where id = #{id}
+	</delete>
+</mapper>

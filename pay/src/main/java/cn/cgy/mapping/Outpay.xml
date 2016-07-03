@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">  
+<mapper namespace="cn.cgy.dao.OutpayDao">  
+    <select id="queryOutpay" resultType="cn.cgy.pojo.Outpay"   useCache="false">  
+        select t.* from outpay t
+    </select>  
+    <select id="queryOutpayById" parameterType="int" resultType="cn.cgy.pojo.Outpay"  useCache="false">  
+        select t.* from outpay t where t.id = #{id} 
+    </select> 
+    <insert id="insert" parameterType="cn.cgy.pojo.Outpay">
+    	insert into outpay 
+    		(    type,  money,  create_user,  create_time) 
+    	values 
+    		( #{type},#{money},#{createUser},#{createTime})
+    </insert> 
+    <update id="update" parameterType="cn.cgy.pojo.Outpay">
+    	update 
+    		outpay 
+    	set 
+    		class_id = #{classId},
+    		type=#{type},
+    		money=#{money},
+    		create_user=#{createUser},
+    		create_time={createTime}
+    	where 
+    		id=#{id}
+    </update>
+    <delete id="delete" parameterType="int">
+    	delete from outpay where id = #{id}
+    </delete>
+</mapper> 

@@ -1,0 +1,20 @@
+body{ background-color: #cecece;}
+.time {
+	position: absolute; top: 5px; right: 5px;
+	z-index: 1;
+}
+.show{
+	width: 800px; height: 400px; 
+	margin: 100px auto;
+	background-image: url(../img/bgsea.jpg);
+	background-color: #4CBBD1;
+}
+.showqu{
+	width: 40px; height: 40px; 
+	background-color: #ACFBFA;
+	margin: 40px;
+	
+}
+a{
+	 style="cursor:hand"
+}
