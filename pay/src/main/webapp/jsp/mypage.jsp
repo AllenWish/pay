@@ -59,7 +59,7 @@
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span>
 				</button>
-				<a href="#" class="navbar-brand">AllenWish</a>
+				<a class="redirect" href="${pageContext.request.contextPath}/about" class="navbar-brand">AllenWish</a>
 			</div>
 			<nav id="bs-navbar" class="collapse navbar-collapse">
 <!-- 				<ul class="nav navbar-nav">
