@@ -2,10 +2,20 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd"> 
 <mapper namespace="cn.cgy.dao.ClassificationDao">  
 	<select id="findAllClass" resultType="cn.cgy.pojo.Classification" useCache="false">
-		select t.* from classification t
+		select 
+			t.id as id,
+			t.class1 as class1,
+			t.class2 as class2,
+			t.class3 as class3
+		from classification t
 	</select>
 	<select id="findClassById" parameterType="int" resultType="cn.cgy.pojo.Classification">
-		select t.* from classification t where t.id = #{id}
+		select 
+			t.id as id,
+			t.class1 as class1,
+			t.class2 as class2,
+			t.class3 as class3 
+		from classification t where t.id = #{id}
 	</select>
 	
 	<insert id="insert" parameterType="cn.cgy.pojo.Classification">

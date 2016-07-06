@@ -25,8 +25,8 @@
   <div class="row">
     <div class="col-sm-4">
       <h3>联系我</h3>
-      <p>AllenWish：<a href="" onclick="open_win('http://www.baidu.com/')" style="cursor:pointer">在线留言</a>！</p>
-      <p>TracyGreenYou：<a href="" onclick="open_win('http://www.sina.com.cn/')" style="cursor:pointer">在线留言</a>！</p>
+      <p>AllenWish：<a href="" onclick="open_win('http://www.baidu.com/')" style="cursor:pointer">在线留言！</a></p>
+      <p>TracyGreenYou：<a href="" onclick="open_win('http://www.sina.com.cn/')" style="cursor:pointer">在线留言！</a></p>
     </div>
     <div class="col-sm-4">
       <h3>在线时间</h3>

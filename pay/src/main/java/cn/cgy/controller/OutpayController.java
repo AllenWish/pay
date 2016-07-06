@@ -1,5 +1,6 @@
 package cn.cgy.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -40,6 +41,18 @@ public class OutpayController {
 	
 	private void login(String username, String password) {
 		
+	}
+	
+	@RequestMapping("/queryjl")
+	public String queryjl(HttpServletRequest request,Model model) throws Exception{
+		
+		String type = request.getParameter("type");
+		int id = Integer.parseInt(type);
+		Outpay out = dao.queryOutpayById(id);
+		List<Outpay> list = new ArrayList<Outpay>();
+		list.add(out);
+		model.addAttribute("list", list);
+		return PagesUtils.SHOW_OUTPAY;
 	}
 
 	@RequestMapping("/"+PagesUtils.INSERT_OUTPAY)
