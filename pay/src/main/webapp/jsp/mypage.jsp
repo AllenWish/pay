@@ -117,7 +117,7 @@
 		</div>
 	</div>
 
-	<script src="http://cdn.bootcss.com/jquery/1.12.1/jquery.min.js"></script>
+	<script src="${pageContext.request.contextPath}/static/bootstrap/js/jquery.min.js"></script>
 	<script src="${pageContext.request.contextPath}/static/bootstrap/js/bootstrap.min.js"></script>
 	<script type="text/javascript">
 		window.onload = function(){
