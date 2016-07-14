@@ -1,7 +1,9 @@
 package cn.cgy.controller;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -27,6 +29,8 @@ public class OutpayController {
 	@RequestMapping("/"+PagesUtils.SHOW_OUTPAY)
 	public String showOutpay(Model model,HttpServletRequest request) throws Exception{
 		
+		String id = UUID.randomUUID().toString();
+		
 /*		HttpSession session =  request.getSession();;
 		String username = request.getParameter("username");
 		String password = request.getParameter("password");
@@ -45,7 +49,7 @@ public class OutpayController {
 	}
 	
 	@RequestMapping("/queryjl")
-	public String queryjl(HttpServletRequest request,Model model,@ModelAttribute("outpay")Outpay outpay) throws Exception{
+	public String queryjl(HttpServletRequest request,Model model,Outpay outpay) throws Exception{
 		
 		String createTime = outpay.getCreateTime();
 		String user = outpay.getCreateUser();

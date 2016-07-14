@@ -4,7 +4,7 @@
 	<select id="queryOutpay" resultType="cn.cgy.pojo.Outpay"
 		useCache="false">
 		select t.id as id,
-			t.class_id as classId ,
+			t.class_type as classType ,
 			t.type as type,
 			t.money as money,
 			t.create_user as createUser,
@@ -14,24 +14,24 @@
 	<select id="queryOutpayById" parameterType="int" resultType="cn.cgy.pojo.Outpay"
 		useCache="false">
 		select t.id as id,
-			t.class_id as classId ,
+			t.class_type as classType ,
 			t.type as type,
 			t.money as money,
 			t.create_user as createUser,
-			t.create_time as createTime 
+			t.create_time as createTime
 		from outpay t where t.id = #{id}
 	</select>
 	<insert id="insert" parameterType="cn.cgy.pojo.Outpay">
 		insert into outpay
-		( type, money, create_user, create_time)
+		(class_type, type, money, create_user, create_time)
 		values
-		( #{type},#{money},#{createUser},#{createTime})
+		(#{classType}, #{type},#{money},#{createUser},#{createTime})
 	</insert>
 	<update id="update" parameterType="cn.cgy.pojo.Outpay">
 		update
 		outpay
 		set
-		class_id = #{classId},
+		class_type = #{classType},
 		type=#{type},
 		money=#{money},
 		create_user=#{createUser},

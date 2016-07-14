@@ -16,7 +16,7 @@
 	<div id="now" class="time"></div>
 	<div class="show">
 		<a href="${pageContext.request.contextPath}/mypage" >
-			<img src="static/img/bgsea.jpg" />
+			<img class="show" src="static/img/bgsea.jpg" />
 		</a>
 	</div>
 	<script>

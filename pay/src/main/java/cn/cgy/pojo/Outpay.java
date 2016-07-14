@@ -9,8 +9,8 @@ import java.math.BigDecimal;
  */
 public class Outpay {
 	private int id;
-	private int classId;
-	private int type;
+	private String classType;
+	private String type;
 	private BigDecimal money;
 	private String createUser = "";
 	private String createTime = "";
@@ -23,19 +23,20 @@ public class Outpay {
 		this.id = id;
 	}
 
-	public int getClassId() {
-		return classId;
+
+	public String getClassType() {
+		return classType;
 	}
 
-	public void setClassId(int classId) {
-		this.classId = classId;
+	public void setClassType(String classType) {
+		this.classType = classType;
 	}
 
-	public int getType() {
+	public String getType() {
 		return type;
 	}
 
-	public void setType(int type) {
+	public void setType(String type) {
 		this.type = type;
 	}
 
@@ -68,11 +69,11 @@ public class Outpay {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Outpay(int id, int classId, int type, BigDecimal money,
+	public Outpay(int id, String classType, String type, BigDecimal money,
 			String createUser, String createTime) {
 		super();
 		this.id = id;
-		this.classId = classId;
+		this.classType = classType;
 		this.type = type;
 		this.money = money;
 		this.createUser = createUser;
@@ -81,7 +82,7 @@ public class Outpay {
 
 	@Override
 	public String toString() {
-		return "Outpay [id=" + id + ", classId=" + classId + ", type=" + type
+		return "Outpay [id=" + id + ", classType=" + classType + ", type=" + type
 				+ ", money=" + money + ", createUser=" + createUser
 				+ ", createTime=" + createTime + "]";
 	}
@@ -90,14 +91,15 @@ public class Outpay {
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + classId;
+		result = prime * result
+				+ ((classType == null) ? 0 : classType.hashCode());
 		result = prime * result
 				+ ((createTime == null) ? 0 : createTime.hashCode());
 		result = prime * result
 				+ ((createUser == null) ? 0 : createUser.hashCode());
 		result = prime * result + id;
 		result = prime * result + ((money == null) ? 0 : money.hashCode());
-		result = prime * result + type;
+		result = prime * result + ((type == null) ? 0 : type.hashCode());
 		return result;
 	}
 
@@ -110,7 +112,10 @@ public class Outpay {
 		if (getClass() != obj.getClass())
 			return false;
 		Outpay other = (Outpay) obj;
-		if (classId != other.classId)
+		if (classType == null) {
+			if (other.classType != null)
+				return false;
+		} else if (!classType.equals(other.classType))
 			return false;
 		if (createTime == null) {
 			if (other.createTime != null)
@@ -129,7 +134,10 @@ public class Outpay {
 				return false;
 		} else if (!money.equals(other.money))
 			return false;
-		if (type != other.type)
+		if (type == null) {
+			if (other.type != null)
+				return false;
+		} else if (!type.equals(other.type))
 			return false;
 		return true;
 	}

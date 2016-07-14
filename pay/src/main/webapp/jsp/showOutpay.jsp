@@ -18,6 +18,14 @@
 	}
 	function submitpass() {
 		var pass = false;
+		var ty = document.mf.type.value;
+		var numty = 0;
+		if(ty==""){
+			numty = 0;
+		}else{
+			numty = parseInt(ty);
+		}
+		document.mf.type.value=numty;
 		/* document.mf.type.value == "" && document.mf.classId.value == "" */
 		if (false) {
 			alert("没有输入查询条件");
@@ -49,7 +57,6 @@
 			<div class="col-xs-1">
 				<label class="control-label" for="type">消费类型</label>
 			</div>
-
 			<div class="col-xs-2">
 				<input type="text" name="type" class="form-control" id="type" placeholder="消费类型">
 			</div>
@@ -88,7 +95,7 @@
 			
 				<c:forEach var="list" items="${list}" varStatus="status">
 					<tr>
-						<td>${list.classId}</td>
+						<td>${list.classType}</td>
 						<td>${list.type}</td>
 						<td>${list.money}</td>
 						<td>${list.createUser}</td>
