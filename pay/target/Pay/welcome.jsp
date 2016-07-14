@@ -3,30 +3,26 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
 <title>欢迎页</title>
+<link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/index.css">
 <style>
-.time {
-	margin: 5px;
-	float: right;
+.show{
+	width: 600px; height: 400px; 
+	background-image: url(static/img/bgsea.jpg);
 }
+
 </style>
 </head>
 <body>
 	<div id="now" class="time"></div>
-	<hr>
-	O(∩_∩)O哈哈~
-	<hr>
-	${pageContext.request.contextPath}/
-	<hr>
-	<input type="button" value="^_^"
-		onclick="javascript:location.href='/pay/showOutpay'" />
-	<input type="button" value="^_^"
-		onclick="javascript:location.href='/pay/index'" />
-		
+	<div class="show">
+		<a href="${pageContext.request.contextPath}/mypage" >
+			<img src="static/img/bgsea.jpg" />
+		</a>
+	</div>
 	<script>
 		function showTime() {
 			var date = new Date();
-			var today = date.toLocaleDateString() + "\t"
-					+ date.toLocaleTimeString();
+			var today = date.toLocaleDateString() + "\t" + date.toLocaleTimeString();
 			document.getElementById("now").innerHTML = today.toString();
 			window.setTimeout("showTime()", 1000);
 		}

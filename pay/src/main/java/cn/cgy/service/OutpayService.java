@@ -15,6 +15,11 @@ public interface OutpayService {
 	public Outpay queryOutpayById(int id) throws Exception;
 	
 	/**
+	 * 根据条件获取记录
+	 */
+	public List<Outpay> queryOutpay(Outpay outpay) throws Exception;
+	
+	/**
 	 * 插入一条记录集
 	 */
 	public void insert(Outpay outpay) throws Exception;

@@ -7,7 +7,7 @@
 <style>
 .show{
 	width: 600px; height: 400px; 
-	background-image: url(static/img/indeximg.png);
+	background-image: url(static/img/bgsea.jpg);
 }
 
 </style>
@@ -16,7 +16,7 @@
 	<div id="now" class="time"></div>
 	<div class="show">
 		<a href="${pageContext.request.contextPath}/mypage" >
-			<img src="static/img/indeximg.png" />
+			<img src="static/img/bgsea.jpg" />
 		</a>
 	</div>
 	<script>

@@ -15,6 +15,12 @@ public interface OutpayDao {
 	 */
 	public List<Outpay> queryOutpay() throws Exception;
 	/**
+	 * 根据条件查询所有Outpay
+	 * @return Outpay
+	 * @throws Exception
+	 */
+	public List<Outpay> queryOutpay(Outpay outpay) throws Exception;
+	/**
 	 * 根据id查询记录
 	 * @param id
 	 * @return outpay

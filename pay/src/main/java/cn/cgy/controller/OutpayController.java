@@ -9,6 +9,7 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import cn.cgy.pojo.Outpay;
@@ -44,13 +45,15 @@ public class OutpayController {
 	}
 	
 	@RequestMapping("/queryjl")
-	public String queryjl(HttpServletRequest request,Model model) throws Exception{
+	public String queryjl(HttpServletRequest request,Model model,@ModelAttribute("outpay")Outpay outpay) throws Exception{
 		
-		String type = request.getParameter("type");
-		int id = Integer.parseInt(type);
-		Outpay out = dao.queryOutpayById(id);
+		String createTime = outpay.getCreateTime();
+		String user = outpay.getCreateUser();
+		
+		Outpay out = dao.queryOutpayById(1);
 		List<Outpay> list = new ArrayList<Outpay>();
 		list.add(out);
+		
 		model.addAttribute("list", list);
 		return PagesUtils.SHOW_OUTPAY;
 	}
