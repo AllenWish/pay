@@ -31,7 +31,7 @@ public class OutpayController {
 		
 		String id = UUID.randomUUID().toString();
 		
-/*		HttpSession session =  request.getSession();;
+/*		HttpSession session =  request.getSession();
 		String username = request.getParameter("username");
 		String password = request.getParameter("password");
 		//校验登录
