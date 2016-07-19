@@ -19,12 +19,12 @@ public class DateUtils {
 	 * 18位年月日时分秒
 	 * YYYY-MM-DD HH-MM-SS
 	 */
-	public static final String date_18_1 ="YYYY-MM-dd HH-mm-ss";
+	public static final String date_19_1 ="YYYY-MM-dd HH-mm-ss";
 	/**
 	 * 18位年月日时分秒
 	 * YYYY-MM-DD HH:MM:SS
 	 */
-	public static final String date_18_2 ="YYYY-MM-dd HH:mm:ss";
+	public static final String date_19_2 ="YYYY-MM-dd HH:mm:ss";
 	
 	
 	/**
@@ -49,5 +49,13 @@ public class DateUtils {
 		Date date = new Date();
 		SimpleDateFormat sdf = new SimpleDateFormat(dateFormat);
 		return sdf.format(date);
+	}
+	
+	public static void main(String[] arg){
+		System.out.println(DateUtils.date_14.length());
+		System.out.println(DateUtils.date_19_1.length());
+		System.out.println(DateUtils.date_19_2.length());
+		String dateStr = DateUtils.getCurrentTime("YYYYMMDDHHmm");
+		System.out.println(dateStr);
 	}
 }
