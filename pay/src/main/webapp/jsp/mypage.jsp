@@ -5,6 +5,7 @@
 <head>
 	<meta charset="UTF-8">
 	<title>首页</title>
+	<link rel="shortcut icon" href="favicon.ico"> 
 	<link href="${pageContext.request.contextPath}/static/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 	<style type="text/css">
 		* { font-family: 'Microsoft Yahei'; }
@@ -48,6 +49,11 @@
 
 		#timebox{ line-height: 45px; color: #007ACC }
 	</style>
+		<script type="text/javascript">
+  	function open_win(s){
+  		window.open(s)
+  	}
+  </script>
 </head>
 <body>
 	<div class="navbar navbar-static-top bs-docs-nav header" id="top" role="banner">
@@ -103,16 +109,16 @@
 
 		<div class="row container redirect-box">
 			<div class="col-sm-3 redirect-item">
-				<a class="redirect" href="${pageContext.request.contextPath}/showOutpay">查询记录</a>
+				<a class="redirect" href="${pageContext.request.contextPath}/showOutpay" target="_blank">查询记录</a>
 			</div>
 			<div class="col-sm-3 redirect-item">
-				<a class="redirect" href="${pageContext.request.contextPath}/complate">对比</a>
+				<a class="redirect" href="${pageContext.request.contextPath}/complate" target="_blank">对比</a>
 			</div>
 			<div class="col-sm-3 redirect-item">
-				<a class="redirect" href="${pageContext.request.contextPath}/manage">管理</a>
+				<a class="redirect" href="${pageContext.request.contextPath}/manage" target="_blank">管理</a>
 			</div>
 			<div class="col-sm-3 redirect-item">
-				<a class="redirect" href="${pageContext.request.contextPath}/about">关于我们</a>
+				<a class="redirect" href="${pageContext.request.contextPath}/about" target="_blank">关于我们</a>
 			</div>
 		</div>
 	</div>

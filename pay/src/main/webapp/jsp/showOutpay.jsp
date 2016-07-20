@@ -5,6 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<link rel="shortcut icon" href="favicon.ico"> 
 <link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/index.css">
 <link
 	href="${pageContext.request.contextPath}/static/bootstrap/css/bootstrap.min.css" rel="stylesheet">
