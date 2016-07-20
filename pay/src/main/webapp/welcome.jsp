@@ -3,10 +3,11 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
 <title>欢迎页</title>
+<link rel="shortcut icon" href="favicon.ico"> 
 <link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/index.css">
 <style>
 .show{
-	width: 600px; height: 400px; 
+	width: 960*0.5px; height: 539*0.5px; 
 	background-image: url(static/img/bgsea.jpg);
 }
 
