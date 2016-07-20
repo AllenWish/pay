@@ -23,7 +23,7 @@
 
 	<mvc:annotation-driven />
 	<mvc:resources location="/static/" mapping="/static/**" />
-
+	<mvc:resources mapping="/favicon.ico" location="/favicon.ico" />
 	<!-- 启动SpringMVC的注解功能，完成请求和注解POJO的映射 -->
 	<bean
 		class="org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter">
