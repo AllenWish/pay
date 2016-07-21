@@ -5,7 +5,7 @@
 <head>
 	<meta charset="UTF-8">
 	<title>管理</title>
-	<link rel="shortcut icon" href="favicon.ico"> 
+	<link rel="shortcut icon" href="favicon.ico" type="image/x-icon" > 
 <!--<link href="http://cdn.bootcss.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet"> -->
 	<link href="${pageContext.request.contextPath}/static/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 

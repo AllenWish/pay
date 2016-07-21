@@ -5,7 +5,7 @@
 <head>
 	<meta charset="UTF-8">
 	<title>首页</title>
-	<link rel="shortcut icon" href="favicon.ico"> 
+	<link rel="shortcut icon" href="favicon.ico" type="image/x-icon" > 
 	<link href="${pageContext.request.contextPath}/static/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 	<style type="text/css">
 		* { font-family: 'Microsoft Yahei'; }

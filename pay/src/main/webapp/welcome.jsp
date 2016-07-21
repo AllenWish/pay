@@ -3,7 +3,7 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
 <title>欢迎页</title>
-<link rel="shortcut icon" href="favicon.ico"> 
+<link rel="shortcut icon" href="favicon.ico" type="image/x-icon" > 
 <link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/index.css">
 <style>
 .show{
