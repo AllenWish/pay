@@ -12,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import cn.cgy.pojo.Outpay;
@@ -71,6 +72,15 @@ public class OutpayController {
 	@RequestMapping("/"+PagesUtils.UPDATE_OUTPAY)
 	public String update(Outpay outpay) throws Exception{
 		dao.update(outpay);
+		return PagesUtils.redirect(PagesUtils.SHOW_OUTPAY);
+	}
+	
+	@RequestMapping("/toupdate")
+	public String toupdate(Model model,HttpServletRequest request, Outpay o){
+		
+		//String[] name = request.getParameterValues("amount");
+		System.out.println(o);
+		model.addAttribute("success");
 		return PagesUtils.redirect(PagesUtils.SHOW_OUTPAY);
 	}
 	

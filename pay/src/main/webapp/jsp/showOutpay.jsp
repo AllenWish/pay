@@ -10,6 +10,8 @@
 <link
 	href="${pageContext.request.contextPath}/static/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
+	<script src="${pageContext.request.contextPath}/static/jQuery/jquery.min.js"></script>
+	<script src="${pageContext.request.contextPath}/static/bootstrap/js/bootstrap.min.js"></script>
 <title>消费记录</title>
 <style type="text/css">
 </style>
@@ -36,6 +38,30 @@
 		}
 		return pass;
 	}
+	
+	function sub(){
+		var url = 'toupdate';
+		$.post(url,
+		{
+			"classType":1,
+			"type":2,
+			"money":22.5,
+			
+			"createUser":"Allen",
+			"createTime":"2016-8-29 20:36:10"
+		} ,
+		function(data){
+			if(data=="success"){
+
+		        alert("提价成功了");
+
+		    }else{
+		    	alert("shibai");
+		    }
+		});
+	}
+	
+	
 </script>
 </head>
 <body>
@@ -81,6 +107,7 @@
 			</div>
 		</div>
 	</form>
+	<form action="toupdate" method="post"role="form" name="mf" >
 	<table class="table table-striped table-bordered table-hover">
 		<thead>
 			<tr>
@@ -89,6 +116,7 @@
 				<th class="col-xs-2">消费金额</th>
 				<th class="col-xs-2">记录人</th>
 				<th class="col-xs-2">记录时间</th>
+				<th class="col-xs-2">调整金额</th>
 			</tr>
 		</thead>
 		<tbody>
@@ -101,11 +129,13 @@
 						<td>${list.money}</td>
 						<td>${list.createUser}</td>
 						<td>${list.createTime}</td>
+						<td><input type="text" name="amount" value="0"/></td>
 					</tr>
 				</c:forEach>
 			</c:if>
 		</tbody>
 	</table>
-
+	<input type="button" class="btn btn-default" value="提交" onclick="sub()"/>
+	</form>
 </body>
 </html>
