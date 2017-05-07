@@ -13,5 +13,4 @@ public class ResponseUtil {
 		out.flush();
 		out.close();
 	}
-	
 }
