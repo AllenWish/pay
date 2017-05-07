@@ -55,7 +55,7 @@ public class DateUtils {
 		System.out.println(DateUtils.date_14.length());
 		System.out.println(DateUtils.date_19_1.length());
 		System.out.println(DateUtils.date_19_2.length());
-		String dateStr = DateUtils.getCurrentTime("YYYYMMDDHHmm");
+		String dateStr = DateUtils.getCurrentTime(DateUtils.date_14);
 		System.out.println(dateStr);
 	}
 }
