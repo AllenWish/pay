@@ -35,7 +35,7 @@ public class OutpayServiceImp implements OutpayService{
 		this.dao.delete(id);
 	}
 
-	@Override
+	
 	public List<Outpay> queryOutpay(Outpay outpay) throws Exception {
 		return this.dao.queryOutpay(outpay);
 	}
