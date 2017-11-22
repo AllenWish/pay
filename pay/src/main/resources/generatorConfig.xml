@@ -20,11 +20,13 @@
     <javaClientGenerator targetPackage="cn.cgy.dao" targetProject="F:\pay" type="XMLMAPPER" >
     	<property name="enableSubPackages" value="true" />
     </javaClientGenerator>
-    <table tableName="aw_pay" domainObjectName="AwPay" >
-    </table>
-   <!-- <table tableName="outpay" domainObjectName="Outpay" >
-    </table>
-    <table tableName="classification" domainObjectName="Classification" >
+    <!--<table tableName="aw_pay" domainObjectName="AwPay" >
     </table>-->
+    <!--  <table tableName="aw_class" domainObjectName="AwClass" >
+    </table>-->
+   <table tableName="aw_user" domainObjectName="AwUser" >
+    </table>
+      <!-- <table tableName="classification" domainObjectName="Classification" >
+      </table>-->
   </context>
 </generatorConfiguration>

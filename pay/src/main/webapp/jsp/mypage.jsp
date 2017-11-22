@@ -5,49 +5,11 @@
 <head>
 	<meta charset="UTF-8">
 	<title>首页</title>
-	<link rel="shortcut icon" href="favicon.ico" type="image/x-icon" > 
+	<link rel="shortcut icon" href="favicon.ico" type="image/x-icon" >
+	<link href="${pageContext.request.contextPath}/static/css/index.css" rel="stylesheet" >
 	<link href="${pageContext.request.contextPath}/static/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 	<style type="text/css">
-		* { font-family: 'Microsoft Yahei'; }
-		body{
-			background: #f8f8f8;
-		}
-		.header{ background: #e8e8e8; border-bottom: 1px solid #f7f7f7}
-		.content{ 
-			background: #fff; padding: 0;
-			position: relative;
-		}
-		.content ul{ padding-left: 0;}
-		.content .item{list-style: none;}
-		.content .item img{
-			height: 460px; width: 100%; border-radius: 5px;
-		}
-		.content .redirect-box{
-			position: absolute;
-			bottom: 40px;
-			margin-left: 0;
-			margin-right: 0;
-			padding-left: 0;
-			padding-right: 0;
-			background: black;
-			filter: alpha(opacity = 50);
-			opacity: 0.6;
-		}
-		.content .redirect-item{
-			 	height: 70px;
-			 }
-		.content .redirect-item .redirect{
-			display: block; text-align: center; line-height: 70px;
-		}
 
-		.content .redirect-item .redirect:hover,.redirect:visited{
-			text-decoration: none;
-			background: #e8e8e8;
-			filter: alpha(opacity = 50);
-			opacity: 0.6;
-		}
-
-		#timebox{ line-height: 45px; color: #007ACC }
 	</style>
 		<script type="text/javascript">
   	function open_win(s){
@@ -109,13 +71,16 @@
 
 		<div class="row container redirect-box">
 			<div class="col-sm-3 redirect-item">
-				<a class="redirect" href="${pageContext.request.contextPath}/showOutpay" target="_blank">查询记录</a>
+				<a class="redirect" href="${pageContext.request.contextPath}/showOutpay" >查询记录</a>
 			</div>
-			<div class="col-sm-3 redirect-item">
-				<a class="redirect" href="${pageContext.request.contextPath}/complate" target="_blank">对比</a>
+			<div class="col-sm-2 redirect-item">
+				<a class="redirect" href="${pageContext.request.contextPath}/complate" >对比</a>
 			</div>
-			<div class="col-sm-3 redirect-item">
-				<a class="redirect" href="${pageContext.request.contextPath}/manage" target="_blank">管理</a>
+			<div class="col-sm-2 redirect-item">
+				<a class="redirect" href="${pageContext.request.contextPath}/manageClass" >管理类别</a>
+			</div>
+			<div class="col-sm-2 redirect-item">
+				<a class="redirect" href="${pageContext.request.contextPath}/man/managePer" >管理人员</a>
 			</div>
 			<div class="col-sm-3 redirect-item">
 				<a class="redirect" href="${pageContext.request.contextPath}/about" target="_blank">关于我们</a>

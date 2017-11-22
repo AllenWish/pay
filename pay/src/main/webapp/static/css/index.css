@@ -1,13 +1,50 @@
 body{ background-color: #cecece;}
+* { font-family: 'Microsoft Yahei'; }
+
+.header{ background: #e8e8e8; border-bottom: 1px solid #f7f7f7}
+.content{
+	background: #fff; padding: 0;
+	position: relative;
+}
+.content ul{ padding-left: 0;}
+.content .item{list-style: none;}
+.content .item img{
+	height: 460px; width: 100%; border-radius: 5px;
+}
+.content .redirect-box{
+	position: absolute;
+	bottom: 40px;
+	margin-left: 0;
+	margin-right: 0;
+	padding-left: 0;
+	padding-right: 0;
+	background: black;
+	filter: alpha(opacity = 50);
+	opacity: 0.6;
+}
+.content .redirect-item{
+	height: 70px;
+}
+.content .redirect-item .redirect{
+	display: block; text-align: center; line-height: 70px;
+}
+
+.content .redirect-item .redirect:hover,.redirect:visited{
+	text-decoration: none;
+	background: #e8e8e8;
+	filter: alpha(opacity = 50);
+	opacity: 0.6;
+}
+
+#timebox{ line-height: 45px; color: #007ACC }
 .time {
 	position: absolute; top: 5px; right: 5px;
 	z-index: 1;
 }
 .show{
-	width: 800px; height: 400px; 
-	margin: 100px auto;
-	background-image: url(../img/bgsea.jpg);
-	background-color: #4CBBD1;
+	width: 800px; height: 400px;
+	margin: 60px auto;
+	background-color: #cecece;
 }
 .showqu{
 	width: 40px; height: 40px; 
@@ -16,5 +53,5 @@ body{ background-color: #cecece;}
 	
 }
 a{
-	 style="cursor:hand"
+	 style:"cursor:hand"
 }

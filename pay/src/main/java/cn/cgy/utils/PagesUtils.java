@@ -15,11 +15,6 @@ public class PagesUtils {
 	 * 对比
 	 */
 	public static final String COMPLATE = "complate";
-	
-	/**
-	 * 管理
-	 */
-	public static final String MANAGE = "manage";
 	/**
 	 * 关于
 	 */

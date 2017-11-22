@@ -21,7 +21,7 @@
 <div class="container">
   <div class="jumbotron" onclick="javascript:history.back()" style="cursor:pointer">
     <h1>我们</h1>
-    <p>这是一个基于SSM(Spring+SpringMVC+Mybatis)框架的系统，用来记录个人的消费记录！</p> 
+    <p>这是一个基于SSM(Spring+SpringMVC+Mybatis)框架的系统，用来记录个人的消费记录！</p>
   </div>
   <div class="row">
     <div class="col-sm-4">
