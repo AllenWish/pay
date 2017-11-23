@@ -358,7 +358,12 @@
             <version>${commons-validator.version}</version>
         </dependency>
 
-
+		<!-- https://mvnrepository.com/artifact/org.freemarker/freemarker -->
+		<dependency>
+			<groupId>org.freemarker</groupId>
+			<artifactId>freemarker</artifactId>
+			<version>2.3.23</version>
+		</dependency>
     </dependencies>
 	<build>
 		<finalName>pay</finalName>
@@ -367,6 +372,7 @@
                 <directory>src/main/java</directory>
                 <includes>
                     <include>**/*.xml</include>
+                    <include>**/*.ftl</include>
                 </includes>
                 <filtering>false</filtering>
             </resource>
