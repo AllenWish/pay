@@ -139,8 +139,6 @@
                 }
             });
         }
-
-
     })
 
     function submit(){
@@ -180,7 +178,7 @@
             type:"POST",
             url:"${pageContext.request.contextPath}/man/deletePer",
             data:{id:id},
-            success:function(data, textStatus, jqXHR) {
+            success:function(data) {
                 var flag = data.success;
                 if(flag=='success'){
                     window.location.href='${pageContext.request.contextPath}/man/managePer';
