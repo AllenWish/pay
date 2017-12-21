@@ -32,6 +32,25 @@
     <listener-class>org.springframework.web.util.IntrospectorCleanupListener</listener-class>
   </listener>
 
+  <!-- hessian start -->
+  <servlet>
+    <servlet-name>hessian</servlet-name>
+    <!-- 使用Spring的代理Servlet -->
+    <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+    <init-param>
+      <param-name>contextConfigLocation</param-name>
+      <param-value>classpath:spring-hessian.xml</param-value>
+    </init-param>
+    <load-on-startup>1</load-on-startup>
+  </servlet>
+
+  <servlet-mapping>
+    <servlet-name>hessian</servlet-name>
+    <url-pattern>/hessian/*</url-pattern>
+  </servlet-mapping>
+  <!-- hessian start -->
+
+
   <!-- Spring MVC -->
   <servlet>
     <servlet-name>SpringMVC</servlet-name>

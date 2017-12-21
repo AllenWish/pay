@@ -2,6 +2,7 @@ package cn.cgy.dao;
 
 import cn.cgy.pojo.AwClass;
 import java.util.List;
+import java.util.Map;
 
 public interface AwClassMapper {
     /**
@@ -43,4 +44,7 @@ public interface AwClassMapper {
      * @mbggenerated Tue Nov 21 15:56:43 GMT+08:00 2017
      */
     int updateByPrimaryKey(AwClass record);
+
+
+    List<Map<String,Object>> getAwClass(Map<String,Object> map);
 }

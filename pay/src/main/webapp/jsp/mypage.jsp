@@ -56,7 +56,7 @@
 		</div>
 	</div>
 
-	<div class="container content">
+	<div class="container content"  style="box-sizing:content-box">
 		<ul>
 			<li class="item">
 				<img src="static/img/background1.jpg" alt="">

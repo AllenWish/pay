@@ -161,7 +161,7 @@
             success:function(data) {
                 var flag = data.success;
                 if(flag=='success'){
-                    window.location.href='${pageContext.request.contextPath}/man/managePer';
+                    window.location.reload();
                 }else{
                     alert(data.msg);
                 }

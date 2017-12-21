@@ -8,7 +8,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="${pageContext.request.contextPath}/static/bootstrap/css/bootstrap.min.css">  
-  <script src="http://apps.bdimg.com/libs/jquery/2.1.1/jquery.min.js"></script>
+  <script src="${pageContext.request.contextPath}/static/jQuery/jquery.min.js"></script>
   <script src="${pageContext.request.contextPath}/static/bootstrap/js/bootstrap.min.js"></script>
   <script type="text/javascript">
   	function open_win(s){
@@ -26,8 +26,8 @@
   <div class="row">
     <div class="col-sm-4">
       <h3>联系我</h3>
-      <p>AllenWish：<a href="" onclick="open_win('http://www.baidu.com/')" style="cursor:pointer">在线留言！</a></p>
-      <p>TracyGreenYou：<a href="" onclick="open_win('http://www.sina.com.cn/')" style="cursor:pointer">在线留言！</a></p>
+      <p>AllenWish：<a href="http://wpa.qq.com/msgrd?v=3&amp;uin=1697501868&amp;site=qq&amp;menu=yes" style="cursor:pointer">在线交流！</a></p>
+      <p>TracyGreenYou：<a href="mailto:cuigenyou@163.com?subject=%E5%85%B3%E4%BA%8Epay%E7%B3%BB%E7%BB%9F%E4%BA%A4%E6%B5%81" style="cursor:pointer">邮件交流！</a></p>
     </div>
     <div class="col-sm-4">
       <h3>在线时间</h3>

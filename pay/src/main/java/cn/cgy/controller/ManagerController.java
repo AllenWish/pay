@@ -2,6 +2,7 @@ package cn.cgy.controller;
 
 import cn.cgy.pojo.AwClass;
 import cn.cgy.pojo.AwUser;
+import cn.cgy.service.AwTypeService;
 import cn.cgy.service.AwUserService;
 import cn.cgy.utils.ResponseUtil;
 import net.sf.json.JSONObject;
@@ -12,8 +13,11 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import javax.annotation.Resource;
 import javax.servlet.http.HttpServletResponse;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created by allenwish on 2017-11-21.
@@ -25,6 +29,8 @@ public class ManagerController {
 
     @Autowired
     private AwUserService awUserService;
+    @Resource
+    private AwTypeService typeService;
 
     @RequestMapping("/managePer")
     public String managePer(Model model) throws Exception{
@@ -34,18 +40,79 @@ public class ManagerController {
         return "managePer";
     }
 
+    @RequestMapping("/getPaClass")
+    @ResponseBody
+    public Map<String,Object> getPaClass(){
+        Map<String,Object> retMap = new HashMap<>();
+        retMap.put("classLevel",1);
+        List<Map<String, Object>> awClass = typeService.getAwClass(retMap);
+        retMap.put("flag",true);
+        retMap.put("msg","success");
+        retMap.put("data",awClass);
+        return retMap;
+    }
 
 
 
     @RequestMapping("/allClass")
     @ResponseBody
-    public void allClass(AwClass awClass , Model model){
+    public  Map<String,Object> allClass(AwClass awClass , Model model){
         logger.debug("allClass:"+awClass.toString());
+        Map<String,Object> retMap = new HashMap<>();
+        retMap.put("flag",true);
+        retMap.put("msg","调用了");
+
+        return retMap;
     }
+    @RequestMapping("/getData")
+    @ResponseBody
+    public Map<String,Object> getData(String classType,String dtype){
+        logger.info("getData classType:"+classType);
+        logger.info("getData dtype:"+dtype);
+        Map<String,Object> retMap = new HashMap<>();
+        retMap.put("className",classType);
+        retMap.put("dtype",dtype);
+        List<Map<String, Object>> awClass = typeService.getAwClass(retMap);
+        retMap.clear();
+        retMap.put("data",awClass);
+        retMap.put("success",true);
+        return retMap;
+    }
+
     @RequestMapping("/addClass")
     @ResponseBody
-    public void addClass(AwClass awClass , Model model){
+    public Map<String,Object> addClass(AwClass awClass , Model model){
         logger.debug("addClass:"+awClass.toString());
+
+        if(awClass.getParentId()==null){
+            awClass.setClassLevel("1");
+        }else{
+            AwClass aClass = typeService.selectByPrimaryKey(awClass.getParentId());
+            if(aClass == null){
+                awClass.setParentId(null);
+                awClass.setClassLevel("1");
+            }else{
+                try {
+                    int le = (Integer.parseInt(aClass.getClassLevel())+1);
+                    awClass.setClassLevel(le+"");
+                } catch (NumberFormatException e) {
+                    awClass.setParentId(null);
+                    awClass.setClassLevel("1");
+                }
+            }
+        }
+        int insert = 0;
+        try {
+            insert = typeService.insert(awClass);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        System.out.println("insert result"+insert);
+        Map<String,Object> retMap = new HashMap<>();
+        retMap.put("flag",true);
+        retMap.put("msg","调用了");
+
+        return retMap;
     }
     @RequestMapping("/updateClass")
     @ResponseBody
