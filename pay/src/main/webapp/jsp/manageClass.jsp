@@ -7,8 +7,8 @@
 	<meta charset="UTF-8">
 	<title>管理类别</title>
 	<link rel="shortcut icon" href="favicon.ico" type="image/x-icon" >
-    <script src="${pageContext.request.contextPath}/static/jQuery/jquery.min.js"></script><%--
-    <script type="text/javascript" src="http://cdn.bootcss.com/bootstrap-select/2.0.0-beta1/js/bootstrap-select.js"></script>
+    <script src="${pageContext.request.contextPath}/static/jQuery/jquery.min.js"></script>
+    <%--<script type="text/javascript" src="http://cdn.bootcss.com/bootstrap-select/2.0.0-beta1/js/bootstrap-select.js"></script>
     <link rel="stylesheet" type="text/css" href="http://cdn.bootcss.com/bootstrap-select/2.0.0-beta1/css/bootstrap-select.css">--%>
     <link href="${pageContext.request.contextPath}/static/css/index.css" rel="stylesheet" >
 	<link href="${pageContext.request.contextPath}/static/bootstrap/css/bootstrap.min.css" rel="stylesheet">
