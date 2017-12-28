@@ -25,8 +25,8 @@ public class AwUserServiceImpl implements AwUserService {
     }
 
     @Override
-    public AwUser getUser(AwUser awUser) {
-        return null;
+    public List<AwUser> getUser(AwUser awUser) {
+        return awUserMapper.getUser(awUser);
     }
 
     @Override

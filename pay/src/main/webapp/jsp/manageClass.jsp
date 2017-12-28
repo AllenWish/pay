@@ -21,26 +21,7 @@
 	</script>
 </head>
 <body>
-<div class="navbar navbar-static-top bs-docs-nav header" id="top" role="banner">
-	<div class="container">
-		<div class="navbar-header">
-			<button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#bs-navbar" aria-controls="bs-navbar" aria-expanded="false">
-				<span class="sr-only">Toggle navigation</span>
-				<span class="icon-bar"></span>
-				<span class="icon-bar"></span>
-				<span class="icon-bar"></span>
-			</button>
-			<a class="redirect" href="${pageContext.request.contextPath}/about" class="navbar-brand">AllenWish</a>
-		</div>
-		<nav id="bs-navbar" class="collapse navbar-collapse">
-			<ul class="nav navbar-nav navbar-right">
-				<!-- <li><a href="javascript:" id="loginBtn">登 录</a></li> -->
-				<span id="timebox"></span>
-			</ul>
-		</nav>
-	</div>
-</div>
-<div class="container content container-fluid ">
+<div class="content container-fluid ">
     <form class="form-inline" id="typeform">
         <div class="form-group">
             <label for="classType">消费类别：</label>
@@ -54,14 +35,16 @@
         <button type="button" class="btn btn-primary" onclick="resetForm()">重置</button>
         <button type="button" class="btn btn-info" data-toggle="modal" data-target="#myModal">新增</button>
     </form>
-
-    <table class="table table-striped table-bordered table-hover">
+    <hr>
+    <table id="classData" class="table table-striped table-bordered table-hover">
         <thead>
         <tr>
-            <th class="col-xs-1">类别级别</th>
-            <th class="col-xs-2">消费类别</th>
-            <th class="col-xs-1">类型级别</th>
-            <th class="col-xs-2">消费类型</th>
+            <th class="col-xs-1 hide" name="id">id</th>
+            <th class="col-xs-1" name="classLevel">类别级别</th>
+            <th class="col-xs-2" name="className">消费类别</th>
+            <th class="col-xs-1" name="parLevel">类型级别</th>
+            <th class="col-xs-2" name="parName">消费类型</th>
+            <th class="col-xs-3" name="opt">操作</th>
         </tr>
         </thead>
         <tbody id="classBody">
@@ -197,14 +180,27 @@
                 var flag = data.success;
                 if(flag){
                     $("#classBody").empty()
+
+                    var $th = $("table tr th");
                     $.each(data.data,function(index,item){
-                    var $tr = $("<tr></tr>"),$td=$("<td></td>"),$inp=$("<input hidden=\"hidden\">");
-                        $tr.append($inp.clone().text(item.id));
-                        $tr.append($inp.clone().text(item.pId));
-                        $tr.append($td.clone().text(item.classLevel));
-                        $tr.append($td.clone().text(item.className));
-                        $tr.append($td.clone().text(item.parLevel));
-                        $tr.append($td.clone().text(item.parName));
+                    var $tr = $("<tr></tr>"),$hd = $("<td class='hide'></td>"),$td=$("<td></td>"),$inp=$("<input hidden=\"hidden\">")
+                        ,$optDiv=$("<div class=\"btn-group btn-group-xs\" role=\"group\" ></div>");
+
+                        $.each($th,function(index,itm){
+                            var name = $(itm).attr('name');
+                            if(name!='opt') {
+                                if($(itm).hasClass('hide')||$(itm).hasClass('.hide')){
+                                    $tr.append($hd.clone().text(item[name]));
+                                }else{
+                                    $tr.append($td.clone().text(item[name]));
+                                }
+                            }else{
+                                $tr.append($td.clone().html($optDiv.clone().html("<button type=\"button\" class=\"btn btn-danger\" onclick=\"deleteType("+item.id+")\">删除</button>"
+                                )));
+//"<button type='button' class='btn btn-warning' data-whatever='"+item.id+"' data-toggle='modal' data-target='#myModal'  >编辑</button>"
+                            }
+                        });
+
                         $tr.appendTo($("#classBody"));
                     });
                 }else{
@@ -227,60 +223,29 @@
         getData()
     }
 
+    function deleteType(id){
+        $.ajax({
+            type:"POST",
+            url:"${pageContext.request.contextPath}/man/deleteClass",
+            data:{id:id},
+            success:function(data) {
+                if(data.flag){
+                    getData()
+                }else{
+                    alert(data.msg);
+                }
+            },
+            dataType :"json",
+            error:function(e){
+                console.info(e)
+            }
+        });
+    }
+
     $(document).ready(
         getData()
     );
-    window.onload=function () {
-        var start = {
-            //获取内容div宽度
-            setRedirectsWidth: function(){
-                var ele = document.getElementsByClassName('content')[0];
-                var redirect = document.getElementsByClassName('redirect')
-                if(ele){
-                    redirect.clientWidth = ele.clientWidth;
-                }
 
-            },
-            //获取当前时间
-            getCurrentTime: function(){
-                var date = new Date();
-                var currentTime = date.getFullYear() +
-                    '-' + getDouble((date.getMonth() + 1)) +
-                    '-'+ getDouble(date.getDate());
-                currentTime = currentTime
-                    + ' '+ getDouble(date.getHours()) + ': ' + getDouble(date.getMinutes()) +
-                    ': ' + getDouble(date.getSeconds());
-                return currentTime;
-            },
-        };
-
-        //当数字小于10时，格式化为01、02..
-        function getDouble(num){
-            if(parseInt(num) < 10){
-                return '0' + num;
-            }else{
-                return num;
-            }
-        };
-
-		/*
-		 ** 立即执行函数
-		 */
-        (function(){
-            //var items = document.getElementsByClassName('item');
-            var timebox = document.getElementById('timebox');
-
-            //设置顶部时间显示
-            setInterval(function(){
-                timebox.innerHTML = start.getCurrentTime();
-            }, 1000);
-
-			/*//设置背景图片轮流切换效果
-			 setInterval(function(){
-			 start.slide(items);
-			 }, 5000);*/
-        })();
-    };
 </script>
 </body>
 </html>

@@ -12,7 +12,7 @@ public interface AwUserService {
 
     public List<AwUser> getAllUser();
 
-    public AwUser getUser(AwUser awUser);
+    public List<AwUser> getUser(AwUser awUser);
 
     public AwUser getUserById(int id);
 

@@ -11,68 +11,41 @@
 	<link href="${pageContext.request.contextPath}/static/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 	<script src="${pageContext.request.contextPath}/static/jQuery/jquery.min.js"></script>
 	<script src="${pageContext.request.contextPath}/static/bootstrap/js/bootstrap.min.js"></script>
+    <script src="${pageContext.request.contextPath}/static/js/common.js"></script>
 </head>
 <body>
-<div class="navbar navbar-static-top bs-docs-nav header" id="top" role="banner">
-	<div class="container">
-		<div class="navbar-header">
-			<button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#bs-navbar" aria-controls="bs-navbar" aria-expanded="false">
-				<span class="sr-only">Toggle navigation</span>
-				<span class="icon-bar"></span>
-				<span class="icon-bar"></span>
-				<span class="icon-bar"></span>
-			</button>
-			<a class="redirect" href="${pageContext.request.contextPath}/about" class="navbar-brand">AllenWish</a>
-		</div>
-		<nav id="bs-navbar" class="collapse navbar-collapse">
-			<ul class="nav navbar-nav navbar-right">
-				<!-- <li><a href="javascript:" id="loginBtn">登 录</a></li> -->
-				<span id="timebox"></span>
-			</ul>
-		</nav>
-	</div>
-</div>
-<%--
-<div id="now" class="time"></div>
-<br />
-<hr>
-<script>
-    function showTime() {
-        var date = new Date();
-        var today = date.toLocaleDateString() + "\t"
-            + date.toLocaleTimeString();
-        document.getElementById("now").innerHTML = today.toString();
-        window.setTimeout("showTime()", 1000);
-    }
-    showTime();
-</script>--%>
 <div class="container content">
-        <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#myModal">新增</button>
-<table class="table table-striped table-bordered table-hover">
+
+    <form method="post" role="form" name="mf" id="perForm" action="/man/allPer">
+        <div class="form-group row">
+
+            <div class="col-md-1 ">
+                <label class="control-label" for="name">姓名：</label>
+            </div>
+
+            <div class="col-md-2">
+                <input type="text" name="username" class="form-control" id="name" placeholder="姓名……">
+            </div>
+            <div class="col-md-3 col-md-offset-1">
+                <button type="button" class="btn btn-warning" onclick="getData('per')">查询</button>
+                <button type="button" class="btn btn-primary" onclick="resetForm('per')">重置</button>
+                <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#myModal">新增</button>
+            </div>
+        </div>
+    </form>
+    <hr>
+
+
+<table class="table table-striped table-bordered table-hover" id="perData">
 	<thead>
 	<tr>
-		<th class="col-xs-6">人员姓名</th>
-		<th class="col-xs-6">操作</th>
+		<th class="col-xs-6" name="username">人员姓名</th>
+		<th class="col-xs-6" name="opt">操作</th>
 
 	</tr>
 	</thead>
 	<tbody>
-	<c:if test="${not empty list && fn:length(list) > 0}">
 
-		<c:forEach var="list" items="${list}" varStatus="status">
-			<tr>
-				<td>${list.username}</td>
-				<td>
-                    <div class="btn-group btn-group-xs" role="group" >
-                        <button type="button" class="btn btn-warning" data-whatever="${list.id}"
-                                data-toggle="modal" data-target="#myModal"  >编辑</button>
-                        <button type="button" class="btn btn-danger"
-                                onclick="deleteUser(${list.id})">删除</button>
-                    </div>
-                </td>
-			</tr>
-		</c:forEach>
-	</c:if>
 	</tbody>
 </table>
 </div>
@@ -108,7 +81,9 @@
     </div><!-- /.modal -->
 </div>
 <script type="text/javascript">
-
+    $(document).ready(
+        getData('per')
+    );
     $('#myModal').on('show.bs.modal', function (event) {
         $('#alertsss').hide();
         var button = $(event.relatedTarget) // 触发事件的按钮
@@ -172,7 +147,7 @@
             }
         });
     }
-    function deleteUser(id){
+    function deleteper(id){
         console.info(id)
         $.ajax({
             type:"POST",
@@ -193,57 +168,7 @@
         });
     }
 
-	window.onload=function () {
-        var start = {
-            //获取内容div宽度
-            setRedirectsWidth: function(){
-                var ele = document.getElementsByClassName('content')[0];
-                var redirect = document.getElementsByClassName('redirect')
-                if(ele){
-                    redirect.clientWidth = ele.clientWidth;
-                }
 
-            },
-            //获取当前时间
-            getCurrentTime: function(){
-                var date = new Date();
-                var currentTime = date.getFullYear() +
-                    '-' + getDouble((date.getMonth() + 1)) +
-                    '-'+ getDouble(date.getDate());
-                currentTime = currentTime
-                    + ' '+ getDouble(date.getHours()) + ': ' + getDouble(date.getMinutes()) +
-                    ': ' + getDouble(date.getSeconds());
-                return currentTime;
-            },
-        };
-
-        //当数字小于10时，格式化为01、02..
-        function getDouble(num){
-            if(parseInt(num) < 10){
-                return '0' + num;
-            }else{
-                return num;
-            }
-        };
-
-        /*
-         ** 立即执行函数
-         */
-        (function(){
-            //var items = document.getElementsByClassName('item');
-            var timebox = document.getElementById('timebox');
-
-            //设置顶部时间显示
-            setInterval(function(){
-                timebox.innerHTML = start.getCurrentTime();
-            }, 1000);
-
-            /*//设置背景图片轮流切换效果
-            setInterval(function(){
-                start.slide(items);
-            }, 5000);*/
-        })();
-    };
 </script>
 
 </body>

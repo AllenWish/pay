@@ -2,6 +2,7 @@ package cn.cgy.dao;
 
 import cn.cgy.pojo.AwPay;
 import java.util.List;
+import java.util.Map;
 
 public interface AwPayMapper {
     /**
@@ -43,4 +44,6 @@ public interface AwPayMapper {
      * @mbggenerated Tue Nov 21 13:57:04 GMT+08:00 2017
      */
     int updateByPrimaryKey(AwPay record);
+
+    List<Map<String,Object>> getData(Map<String, Object> paramsMap);
 }

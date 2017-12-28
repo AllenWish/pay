@@ -69,4 +69,20 @@
     select id, user_id, big_class_id, sm_class_id, j_amount, create_time
     from aw_pay
   </select>
+
+  <select id="getData" parameterType="java.util.Map" resultType="java.util.Map">
+    select p.*,b.class_name as className,sm.class_name as parName,u.username
+    from aw_pay p
+    LEFT JOIN aw_class sm on p.sm_class_id = sm.id
+    LEFT JOIN aw_class b on p.big_class_id = b.id
+    LEFT JOIN aw_user u on p.user_id = u.id
+    WHERE
+	1= 1
+	<if test="className!=null and className!=''">
+        and sm.class_name like CONCAT('%',#{className},'%')
+    </if>
+    <if test="parName!=null and parName!=''">
+      and b.class_name like CONCAT('%',#{parName},'%')
+    </if>
+  </select>
 </mapper>

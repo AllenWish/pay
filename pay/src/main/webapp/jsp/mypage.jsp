@@ -9,16 +9,21 @@
 	<link href="${pageContext.request.contextPath}/static/css/index.css" rel="stylesheet" >
 	<link href="${pageContext.request.contextPath}/static/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 	<style type="text/css">
+        .body-container{
+            margin-top: 50px;
+            margin-bottom: 50px;
+        }
+        .sidebar{
+            background-color: #f5f5f5;
+            padding-top: 10px;
+        }
 
 	</style>
-		<script type="text/javascript">
-  	function open_win(s){
-  		window.open(s)
-  	}
-  </script>
+	<script type="text/javascript">
+	</script>
 </head>
 <body>
-	<div class="navbar navbar-static-top bs-docs-nav header" id="top" role="banner">
+	<div class="navbar navbar-fixed-top bs-docs-nav  header navbar-inverse" id="top" role="banner">
 		<div class="container">
 			<div class="navbar-header">
 				<button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#bs-navbar" aria-controls="bs-navbar" aria-expanded="false">
@@ -27,67 +32,43 @@
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span>
 				</button>
-				<a class="redirect" href="${pageContext.request.contextPath}/about" class="navbar-brand">AllenWish</a>
+
 			</div>
-			<nav id="bs-navbar" class="collapse navbar-collapse">
-<!-- 				<ul class="nav navbar-nav">
-					<li>
-						<a href="#">主页</a>
-					</li>
-					<li>
-						<a href="#">文章</a>
-					</li>
-					<li>
-						<a href="#">讨论</a>
-					</li>
-					<li>
-						<a href="#">JavaScript 插件</a>
-					</li>
-					<li>
-						<a href="../customize/">定制网站</a>
-					</li>
-					<li><a href="#">个人项目</a></li>
-				</ul> -->
+			<nav id="bs-navbar" class="collapse navbar-collapse ">
+				<ul class="nav navbar-nav">
+					<a class="redirect" href="${pageContext.request.contextPath}/mypage" class="navbar-brand" id="allenwish">AllenWish</a>
+				</ul>
 				<ul class="nav navbar-nav navbar-right">
-					<!-- <li><a href="javascript:" id="loginBtn">登 录</a></li> -->
 					<span id="timebox"></span>
 				</ul>
 			</nav>
 		</div>
 	</div>
 
-	<div class="container content"  style="box-sizing:content-box">
-		<ul>
-			<li class="item">
-				<img src="static/img/background1.jpg" alt="">
-			</li>
-			<li class="item" style="display: none;">
-				<img src="static/img/background2.jpg" alt="">
-			</li>
-			<li class="item" style="display: none;">
-				<img src="static/img/background3.jpg" alt="">
-			</li>				
-		</ul>	
-
-		<div class="row container redirect-box">
-			<div class="col-sm-3 redirect-item">
-				<a class="redirect" href="${pageContext.request.contextPath}/showOutpay" >查询记录</a>
-			</div>
-			<div class="col-sm-2 redirect-item">
-				<a class="redirect" href="${pageContext.request.contextPath}/complate" >对比</a>
-			</div>
-			<div class="col-sm-2 redirect-item">
-				<a class="redirect" href="${pageContext.request.contextPath}/manageClass" >管理类别</a>
-			</div>
-			<div class="col-sm-2 redirect-item">
-				<a class="redirect" href="${pageContext.request.contextPath}/man/managePer" >管理人员</a>
-			</div>
-			<div class="col-sm-3 redirect-item">
-				<a class="redirect" href="${pageContext.request.contextPath}/about" target="_blank">关于我们</a>
-			</div>
-		</div>
+    <div class="container-fluid body-container" >
+        <div class="row">
+            <div class="col-md-2 sidebar" >
+                <ul class="nav nav-list">
+                    <li><a href="/showOutpay" target="rightFrame">消费记录</a></li>
+                    <li class="nav-divider"></li>
+                    <li><a href="/complate" target="rightFrame">对比</a></li>
+                    <li class="nav-divider"></li>
+                    <li><a href="/manageClass" target="rightFrame">管理类别</a></li>
+                    <li class="nav-divider"></li>
+                    <li><a href="/managePer" target="rightFrame">管理人员</a></li>
+                </ul>
+            </div>
+            <div class="col-md-10" style="margin-top: 30px;">
+                <iframe id="rightFrame" name="rightFrame" src="/about" style="overflow:visible;"
+                        scrolling="yes" frameborder="no" width="100%" ></iframe>
+            </div>
+        </div>
 	</div>
-
+    <div class="navbar navbar-fixed-bottom navbar-inverse row" id="bottom" role="banner">
+        <div class="col-md-6 col-md-offset-3"  style="text-align: center;color:#ffffff;margin-top: 15px">
+            &copy; AllenWish
+        </div>
+    </div>
 	<script src="${pageContext.request.contextPath}/static/jQuery/jquery.min.js"></script>
 	<script src="${pageContext.request.contextPath}/static/bootstrap/js/bootstrap.min.js"></script>
 	<script type="text/javascript">
@@ -104,6 +85,13 @@
 					}
 				
 				},
+				setHeight:function(){
+				    var height = $(document).height();
+				    var navHeight = $('#bottom').height()
+                    var contentBodyHeight = height-2*navHeight-15;
+                    $('#rightFrame').height(contentBodyHeight-30);
+                    $('.sidebar').height(contentBodyHeight);
+                },
 				//获取当前时间
 				getCurrentTime: function(){
 					var date = new Date();
@@ -114,22 +102,6 @@
 						+ ' '+ getDouble(date.getHours()) + ': ' + getDouble(date.getMinutes()) + 
 						': ' + getDouble(date.getSeconds());
 					return currentTime;
-				},
-				//幻灯片效果
-				slide: function(eles){
-					var items = eles || [];
-					for(var i = 0; i<items.length; i++){
-						if(items[i].style.display != 'none'){
-							items[i].style.display = 'none';
-							if(i == items.length - 1){
-								items[0].style.display = "block";
-								break;
-							}else{
-								items[i+1].style.display = "block";
-								break;
-							}
-						}
-					}
 				},
 			};
 
@@ -146,18 +118,13 @@
 			** 立即执行函数
 			*/
 			(function(){
-				var items = document.getElementsByClassName('item');
-				var timebox = document.getElementById('timebox');			
-				
+				var timebox = document.getElementById('timebox');
+                start.setHeight();
 				//设置顶部时间显示
 				setInterval(function(){
 					timebox.innerHTML = start.getCurrentTime();  
 				}, 1000);
 
-				//设置背景图片轮流切换效果
-				setInterval(function(){
-						start.slide(items);
-			 	}, 5000);
 			})();
 		};
 

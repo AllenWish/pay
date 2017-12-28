@@ -5,6 +5,7 @@ import cn.cgy.pojo.AwUser;
 import cn.cgy.service.AwTypeService;
 import cn.cgy.service.AwUserService;
 import cn.cgy.utils.ResponseUtil;
+import cn.cgy.utils.ResultMap;
 import net.sf.json.JSONObject;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -121,21 +122,22 @@ public class ManagerController {
     }
     @RequestMapping("/deleteClass")
     @ResponseBody
-    public void deleteClass(AwClass awClass , Model model){
+    public Map<String,Object> deleteClass(AwClass awClass , Model model){
         logger.debug("deleteClass:"+awClass.toString());
+        typeService.deleteByPrimaryKey(awClass.getId());
+        Map<String,Object> retMap = new HashMap<>();
+        retMap.put("flag",true);
+        retMap.put("msg","调用了");
+        return retMap;
     }
 
     @RequestMapping("/allPer")
     @ResponseBody
-    public void allPer(AwUser awUser , Model model, HttpServletResponse response) throws Exception {
-        logger.debug("awUser:"+awUser.toString());
-        List<AwUser> allUser = awUserService.getAllUser();
-        logger.debug("allUser:"+allUser.toString());
-        try {
-            ResponseUtil.write(response, JSONObject.fromObject(allUser));
-        } catch (Exception e) {
-            ResponseUtil.write(response,"出错了");
-        }
+    public Map<String,Object> allPer(AwUser awUser , Model model, HttpServletResponse response) throws Exception {
+
+        List<AwUser> allUser = awUserService.getUser(awUser);
+
+        return ResultMap.successMap(allUser);
 
     }
     @RequestMapping("/getUser")

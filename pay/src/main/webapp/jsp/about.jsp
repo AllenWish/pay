@@ -19,26 +19,26 @@
 <body>
 
 <div class="container">
-  <div class="jumbotron" onclick="javascript:history.back()" style="cursor:pointer">
+  <div class="jumbotron">
     <h1>我们</h1>
     <p>这是一个基于SSM(Spring+SpringMVC+Mybatis)框架的系统，用来记录个人的消费记录！</p>
   </div>
   <div class="row">
-    <div class="col-sm-4">
+    <div class="col-sm-6">
       <h3>联系我</h3>
       <p>AllenWish：<a href="http://wpa.qq.com/msgrd?v=3&amp;uin=1697501868&amp;site=qq&amp;menu=yes" style="cursor:pointer">在线交流！</a></p>
       <p>TracyGreenYou：<a href="mailto:cuigenyou@163.com?subject=%E5%85%B3%E4%BA%8Epay%E7%B3%BB%E7%BB%9F%E4%BA%A4%E6%B5%81" style="cursor:pointer">邮件交流！</a></p>
     </div>
-    <div class="col-sm-4">
+    <div class="col-sm-6">
       <h3>在线时间</h3>
       <p>周一至周五：9:00-11:30,13:30-17:00！</p>
       <p>周六、周日：全天24小时任性在线（不定时在线）！</p>
     </div>
-    <div class="col-sm-4">
+    <%--<div class="col-sm-4">
       <h3>其他联系方式</h3>        
       <p>电话：私人保密！</p>
       <p>邮箱：cuigenyou@163.com ！</p>
-    </div>
+    </div>--%>
   </div>
 </div>
 

@@ -43,4 +43,6 @@ public interface AwUserMapper {
      * @mbggenerated Tue Nov 21 16:06:07 GMT+08:00 2017
      */
     int updateByPrimaryKey(AwUser record);
+
+    List<AwUser> getUser(AwUser awUser);
 }

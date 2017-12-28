@@ -1,7 +1,7 @@
 body{ background-color: #cecece;}
 * { font-family: 'Microsoft Yahei'; }
 
-.header{ background: #e8e8e8; border-bottom: 1px solid #f7f7f7}
+.header{ background: #cecece; border-bottom: 1px solid #f7f7f7}
 .content{
 	background: #fff; padding: 0;
 	position: relative;
@@ -35,7 +35,7 @@ body{ background-color: #cecece;}
 	filter: alpha(opacity = 50);
 	opacity: 0.6;
 }
-
+#allenwish{line-height: 45px;}
 #timebox{ line-height: 45px; color: #007ACC }
 .time {
 	position: absolute; top: 5px; right: 5px;
