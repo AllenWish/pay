@@ -29,7 +29,7 @@
             <div class="col-md-3 col-md-offset-1">
                 <button type="button" class="btn btn-warning" onclick="getData('per')">查询</button>
                 <button type="button" class="btn btn-primary" onclick="resetForm('per')">重置</button>
-                <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#myModal">新增</button>
+                <button type="button" class="btn btn-danger" onclick="doadd()">新增</button>
             </div>
         </div>
     </form>
@@ -115,6 +115,11 @@
             });
         }
     })
+
+    function doadd(){
+
+        window.location.href="/man/goperadd";
+    }
 
     function submit(){
         var username = $('#username').val();

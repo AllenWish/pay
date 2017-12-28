@@ -131,6 +131,28 @@ public class ManagerController {
         return retMap;
     }
 
+    @RequestMapping("/goperadd")
+    public String goperadd(){
+        return "perAdd";
+    }
+    @RequestMapping("/dopersave")
+    public Map<String,Object> dopersave(AwUser awUser){
+        logger.debug("awUser:"+awUser.toString());
+        try {
+            if(awUser.getId()==null||awUser.getId()==0){
+                awUserService.insertUser(awUser);
+                logger.debug("addPer:"+awUser.getUsername());
+            }else{
+                awUserService.updateUser(awUser);
+                logger.debug("updateUser:"+awUser.getUsername());
+            }
+        } catch (Exception e) {
+           return ResultMap.errorMap(e.getMessage());
+        }
+        return ResultMap.successMap("/managePer");
+        //return "redirect:/managePer";
+    }
+
     @RequestMapping("/allPer")
     @ResponseBody
     public Map<String,Object> allPer(AwUser awUser , Model model, HttpServletResponse response) throws Exception {
@@ -153,25 +175,7 @@ public class ManagerController {
     @RequestMapping("/addPer")
     @ResponseBody
     public void addPer(AwUser awUser , Model model,HttpServletResponse response ) {
-        logger.debug("awUser:"+awUser.toString());
-        JSONObject json = new JSONObject();
-        json.put("success","success");
-        json.put("msg","操作成功");
-        try {
-            if(awUser.getId()==null||awUser.getId()==0){
-                awUserService.insertUser(awUser);
-                logger.debug("addPer:"+awUser.getUsername());
-            }else{
-                awUserService.updateUser(awUser);
-                logger.debug("updateUser:"+awUser.getUsername());
-            }
-            ResponseUtil.write(response,json);
-        } catch (Exception e) {
-            e.printStackTrace();
-            json.put("success","error");
-            json.put("msg",e.getMessage());
-            ResponseUtil.write(response,json);
-        }
+
     }
     @RequestMapping("/updatePer")
     @ResponseBody
