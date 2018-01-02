@@ -46,4 +46,8 @@ public interface AwPayMapper {
     int updateByPrimaryKey(AwPay record);
 
     List<Map<String,Object>> getData(Map<String, Object> paramsMap);
+
+    List<Map<String,Object>> getWithExt();
+
+
 }

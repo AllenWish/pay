@@ -49,37 +49,6 @@
 	</tbody>
 </table>
 </div>
-<!-- 模态框（Modal） -->
-<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
-                    &times;
-                </button>
-                <h4 class="modal-title" id="myModalLabel">
-                    新增人员
-                </h4>
-            </div>
-            <div class="modal-body">
-                <input type="text" id="id" hidden="hidden" name="id">
-                人员姓名：<input type="text" id="username" name="username">
-                <div id="alertsss" class="alert alert-warning alert-dismissible" role="alert">
-                    <strong>Warning!</strong> username could not be null.
-                </div>
-                <input type="text" id="flag" name="flag" hidden="hidden">
-            </div>
-
-            <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">关闭
-                </button>
-                <button type="button" class="btn btn-danger" onclick="submit()">
-                    提交
-                </button>
-            </div>
-        </div><!-- /.modal-content -->
-    </div><!-- /.modal -->
-</div>
 <script type="text/javascript">
     $(document).ready(
         getData('per')
@@ -141,7 +110,7 @@
             success:function(data) {
                 var flag = data.success;
                 if(flag=='success'){
-                    window.location.reload();
+                    getData('per')
                 }else{
                     alert(data.msg);
                 }
@@ -161,7 +130,7 @@
             success:function(data) {
                 var flag = data.success;
                 if(flag=='success'){
-                    window.location.href='${pageContext.request.contextPath}/man/managePer';
+                    getData('per')
                 }else{
                     alert(data.msg);
                 }

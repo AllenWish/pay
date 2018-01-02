@@ -85,6 +85,9 @@
     <if test="classLevel!=null and classLevel!=''">
       and d.class_level = #{classLevel}
     </if>
+    <if test="parentId!=null and parentId!=''">
+      and d.parent_id = #{parentId}
+    </if>
   </select>
 
 </mapper>

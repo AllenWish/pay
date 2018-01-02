@@ -48,8 +48,6 @@ public class IndexController {
 	}
 	@RequestMapping("/managePer")
 	public String managePer(Model model) throws Exception{
-//        List<AwUser> allUser = awUserService.getAllUser();
-//        model.addAttribute("list",allUser);
         //跳转到对比页
 		return "managePer";
 	}

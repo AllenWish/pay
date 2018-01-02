@@ -11,10 +11,12 @@ import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.util.HashMap;
 import java.util.List;
@@ -52,7 +54,15 @@ public class ManagerController {
         retMap.put("data",awClass);
         return retMap;
     }
-
+    @RequestMapping("/getChClass")
+    @ResponseBody
+    public Map<String,Object> getChClass(Integer parId){
+        Map<String,Object> retMap = new HashMap<>();
+        retMap.put("classLevel",2);
+        retMap.put("parentId",parId);
+        List<Map<String, Object>> awClass = typeService.getAwClass(retMap);
+        return ResultMap.returnMap(awClass,true);
+    }
 
 
     @RequestMapping("/allClass")
@@ -132,13 +142,26 @@ public class ManagerController {
     }
 
     @RequestMapping("/goperadd")
-    public String goperadd(){
+    public String goperadd(Integer id, HttpServletRequest request){
+        AwUser awUser = new AwUser();
+        if(id!=null&&id>=0){
+            awUser = awUserService.getUserById(id);
+        }
+        request.setAttribute("user",awUser);
         return "perAdd";
     }
     @RequestMapping("/dopersave")
+    @ResponseBody
     public Map<String,Object> dopersave(AwUser awUser){
         logger.debug("awUser:"+awUser.toString());
         try {
+            String username = awUser.getUsername();
+            AwUser user = new AwUser();
+            user.setUsername(username);
+            List<AwUser> awUsers = awUserService.getUser(user);
+            if(awUsers.size()>0){
+                return ResultMap.errorMap(username+"已存在");
+            }
             if(awUser.getId()==null||awUser.getId()==0){
                 awUserService.insertUser(awUser);
                 logger.debug("addPer:"+awUser.getUsername());

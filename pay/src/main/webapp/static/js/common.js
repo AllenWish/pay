@@ -56,3 +56,53 @@ function resetForm(id) {
         .removeAttr('selected');
     getData(id)
 }
+
+function getClass(id,method){
+    $.ajax({
+        type:"POST",
+        url:"/man/"+method,
+        dataType:'json',
+        success:function(res) {
+            if(res.flag){
+                var seBody = $('#'+id).empty(),$op = $("<option></option>");
+                $op.clone().text('无父级').val(0).appendTo(seBody);
+                $.each(res.data,function(index,item){
+                    $op.clone().text(item.className).val(item.id).appendTo(seBody);
+                });
+            }
+
+        }
+    })
+}
+
+function getUser(id){
+    $.ajax({
+        type:"POST",
+        url:"/man/allPer",
+        dataType:'json',
+        success:function(res) {
+            if(res.flag){
+                var seBody = $('#'+id).empty(),$op = $("<option></option>")
+                $.each(res.data,function(index,item){
+                    $op.clone().text(item.username).val(item.id).appendTo(seBody);
+                });
+            }
+
+        }
+    })
+}
+
+function subForm(id){
+    $.post(
+        $("#"+id).attr("action"),
+        $("#"+id).serialize(),
+        function(res){
+            if(res.flag){
+                window.location.href=res.data;
+            }else{
+                alert(res.msg)
+            }
+        },
+        "json"
+    );
+}

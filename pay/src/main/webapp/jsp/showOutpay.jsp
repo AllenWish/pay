@@ -49,9 +49,10 @@
 			<div class="col-xs-2">
 				<input type="text" name="createTime" class="form-control" id="createTime" placeholder="日期……">
 			</div>
-			<div class="col-xs-2 col-md-offset-1">
+			<div class="col-xs-3">
 				<button type="button" class="btn btn-warning" onclick="getData('pay')">查询</button>
 				<button type="button" class="btn btn-primary" onclick="resetForm('pay')">重置</button>
+				<button type="button" class="btn btn-danger" onclick="doadd()">新增</button>
 			</div>
 		</div>
 	</form>
@@ -78,6 +79,9 @@
     $(document).ready(
         getData('pay')
     );
+    function doadd(){
 
+        window.location.href="/pay/gosave";
+    }
 </script>
 </html>

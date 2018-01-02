@@ -17,21 +17,10 @@
   	function sub(){
   	    var username = $("#username").val();
   	    if(username==''||username.length<=0||username.length>10){
-
+            $("#alert").removeClass("hide")
   	        return false;
         }
-        $.post(
-            $("#perForm").attr("action"),
-            $("#perForm").serialize(),
-            function(res){
-                if(res.flag){
-                    window.location.href=res.msg;
-                }else{
-                    alert(res.msg)
-                }
-            },
-            "json"
-        );
+        subForm('perForm')
     }
   </script>
 </head>
@@ -39,16 +28,23 @@
 
 <div class="container">
   <form method="post" role="form" name="mf" id="perForm" action="/man/dopersave">
+      <input hidden="hidden"  name="id" id="id" value="${user.id}">
+      <input hidden="hidden"  name="flag" id="flag" value="0">
       <div class="form-group row">
-
           <div class="col-md-1 ">
               <label class="control-label" for="username">姓名：</label>
           </div>
 
           <div class="col-md-2">
-              <input type="text" name="username" class="form-control" required id="username" placeholder="姓名……">
+              <input type="text" name="username" class="form-control" required id="username" placeholder="姓名……"
+                     value="${user.username}" onblur="check()">
           </div>
 
+          <div class="col-md-4">
+              <div id="alert" class="alert alert-warning hide">
+                  <strong>警告！</strong>请正确填写姓名
+              </div>
+          </div>
           <div class="col-md-3 col-md-offset-1">
               <button type="button" class="btn btn-primary" onclick="sub()">提交</button>
               <button type="button" class="btn btn-danger" onclick="back()">返回</button>
@@ -56,6 +52,15 @@
       </div>
   </form>
 </div>
-
+<script type="application/javascript">
+    function check(){
+        var username = $("#username").val();
+        if(username==''||username.length<=0||username.length>10){
+            $("#alert").removeClass("hide")
+        }else{
+            $("#alert").addClass("hide")
+        }
+    }
+</script>
 </body>
 </html>

@@ -13,6 +13,7 @@
     <link href="${pageContext.request.contextPath}/static/css/index.css" rel="stylesheet" >
 	<link href="${pageContext.request.contextPath}/static/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 	<script src="${pageContext.request.contextPath}/static/bootstrap/js/bootstrap.min.js"></script>
+	<script src="${pageContext.request.contextPath}/static/js/common.js"></script>
 	<script type="text/javascript">
         function back() {
             window.history.back();
@@ -112,21 +113,7 @@
             modal.find('.modal-body input').eq(1).val('');
             modal.find('.modal-body input').eq(0).val('');
 //            modal.find('.modal-body input').eq(2).val('0');
-            $.ajax({
-                type:"POST",
-                url:"${pageContext.request.contextPath}/man/getPaClass",
-                dataType:'json',
-                success:function(res) {
-                    if(res.flag){
-                        var seBody = $('#parentTypeId').empty(),$op = $("<option></option>")
-                        $op.clone().text('无父级').val(0).appendTo(seBody);
-                        $.each(res.data,function(index,item){
-                            $op.clone().text(item.className).val(item.id).appendTo(seBody);
-                        });
-                    }
-
-                }
-            })
+            getClass('prId','getPaClass')
 
         }else {
             modal.find('.modal-title').text('编辑')

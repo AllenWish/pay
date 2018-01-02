@@ -45,4 +45,9 @@ public class PayServiceIml implements PayService {
     public List<Map<String, Object>> getData(Map<String, Object> paramsMap) {
         return payMapper.getData(paramsMap);
     }
+
+    @Override
+    public List<Map<String, Object>> getWithExt() {
+        return payMapper.getWithExt();
+    }
 }

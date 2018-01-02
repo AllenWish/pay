@@ -85,4 +85,12 @@
       and b.class_name like CONCAT('%',#{parName},'%')
     </if>
   </select>
+
+  <select id="getWithExt" resultType="java.util.Map">
+    select p.big_class_id as parentId,c.class_name as parentName,p.create_time as createTime,sum(p.j_amount) as totAmount from aw_pay p
+    LEFT JOIN aw_class c on c.id = p.big_class_id
+    GROUP BY p.big_class_id,p.create_time
+    ORDER BY p.create_time
+  </select>
+
 </mapper>

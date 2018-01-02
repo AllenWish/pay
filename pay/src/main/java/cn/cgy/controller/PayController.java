@@ -8,6 +8,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -31,4 +32,31 @@ public class PayController {
         List<Map<String,Object>> awPays = payService.getData(paramsMap);
         return ResultMap.successMap(awPays);
     }
+
+    @RequestMapping("/gosave")
+    public String gosave(Integer id, HttpServletRequest request){
+
+        if(id!=null&&id>0){
+            AwPay pay = payService.selectByPrimaryKey(id);
+            request.setAttribute("pay",pay);
+        }
+        return "paysave";
+    }
+
+    @RequestMapping("/dosave")
+    @ResponseBody
+    public Map<String,Object> dosave(AwPay pay){
+        try {
+            if(pay.getId()==null||pay.getId()<=0){
+                pay.setId(null);
+                payService.insert(pay);
+            }else{
+                payService.updateByPrimaryKey(pay);
+            }
+        } catch (Exception e) {
+            return ResultMap.errorMap(e.getMessage());
+        }
+        return ResultMap.successMap("/showOutpay");
+    }
+
 }
