@@ -24,7 +24,7 @@
 <body>
 
 <div class="container">
-  <form method="post" role="form" name="mf" id="payForm" action="/pay/dosave">
+  <form method="post" role="form" name="mf" id="payForm" action="${pageContext.request.contextPath}/pay/dosave">
       <input hidden="hidden"  name="id" id="id" value="${pay.id}">
       <div class="form-group ">
           <div class="row">

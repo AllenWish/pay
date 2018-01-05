@@ -26,7 +26,7 @@
 </head>
 <body>
 <div class="container">
-	<form method="post" role="form" name="mf" id="payForm" action="/pay/getData">
+	<form method="post" role="form" name="mf" id="payForm" action="${pageContext.request.contextPath}/pay/getData">
 		<div class="form-group row">
 			<div class="col-xs-1">
 				<label class="control-label" for="className">类型</label>
@@ -81,7 +81,7 @@
     );
     function doadd(){
 
-        window.location.href="/pay/gosave";
+        window.location.href="${pageContext.request.contextPath}/pay/gosave";
     }
 </script>
 </html>

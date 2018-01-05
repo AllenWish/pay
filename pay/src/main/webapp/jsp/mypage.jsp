@@ -49,17 +49,17 @@
         <div class="row">
             <div class="col-md-2 sidebar" >
                 <ul class="nav nav-list">
-                    <li><a href="/showOutpay" target="rightFrame">消费记录</a></li>
+                    <li><a href="showOutpay" target="rightFrame">消费记录</a></li>
                     <li class="nav-divider"></li>
-                    <li><a href="/complate" target="rightFrame">对比</a></li>
+                    <li><a href="complate" target="rightFrame">对比</a></li>
                     <li class="nav-divider"></li>
-                    <li><a href="/manageClass" target="rightFrame">管理类别</a></li>
+                    <li><a href="manageClass" target="rightFrame">管理类别</a></li>
                     <li class="nav-divider"></li>
-                    <li><a href="/managePer" target="rightFrame">管理人员</a></li>
+                    <li><a href="managePer" target="rightFrame">管理人员</a></li>
                 </ul>
             </div>
             <div class="col-md-10" style="margin-top: 30px;">
-                <iframe id="rightFrame" name="rightFrame" src="/about" style="overflow:visible;"
+                <iframe id="rightFrame" name="rightFrame" src="about" style="overflow:visible;"
                         scrolling="yes" frameborder="no" width="100%" ></iframe>
             </div>
         </div>

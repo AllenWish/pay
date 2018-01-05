@@ -27,7 +27,7 @@
 <body>
 
 <div class="container">
-  <form method="post" role="form" name="mf" id="perForm" action="/man/dopersave">
+  <form method="post" role="form" name="mf" id="perForm" action="${pageContext.request.contextPath}/man/dopersave">
       <input hidden="hidden"  name="id" id="id" value="${user.id}">
       <input hidden="hidden"  name="flag" id="flag" value="0">
       <div class="form-group row">

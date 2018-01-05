@@ -45,7 +45,7 @@
         Highcharts.chart('container', options);
     }
     $(function(){
-        $.post("/complate/getAll","",function (res) {
+        $.post("${pageContext.request.contextPath}/complate/getAll","",function (res) {
             if(res.flag){
 
                 options.series = res.data;

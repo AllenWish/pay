@@ -16,7 +16,7 @@
 <body>
 <div class="container content">
 
-    <form method="post" role="form" name="mf" id="perForm" action="/man/allPer">
+    <form method="post" role="form" name="mf" id="perForm" action="${pageContext.request.contextPath}/man/allPer">
         <div class="form-group row">
 
             <div class="col-md-1 ">
@@ -87,7 +87,7 @@
 
     function doadd(){
 
-        window.location.href="/man/goperadd";
+        window.location.href="${pageContext.request.contextPath}/man/goperadd";
     }
 
     function submit(){
